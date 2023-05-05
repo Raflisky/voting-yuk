@@ -55,7 +55,7 @@ const CreateVote = () => {
         setKandidatas(newKandidat);
     };
 
-    const createVotes = (e) => {
+    const createVotes = (e: any) => {
         e.preventDefault()
         // validasi
         if (title === "") {
@@ -120,13 +120,13 @@ const CreateVote = () => {
                     height={198}
                 />
                 <h1 className="text-4xl font-bold">Buat Voting Baru</h1>
-                <p className="text-zinc-700 mt-3">
+                <p className="mt-3 text-zinc-700">
                     Silahkan masukkan data yang dibutuhkan sebelum membuat vote online
                 </p>
                 <form className="flex flex-col">
                     {/* Detail Vote Start */}
                     <div className="space-y-5">
-                        <h3 className="font-semibold text-xl mt-10">Detail Voting</h3>
+                        <h3 className="mt-10 text-xl font-semibold">Detail Voting</h3>
                         <div className="flex flex-col">
                             <label htmlFor="judul" className="mt-5">
                                 Judul
@@ -135,7 +135,7 @@ const CreateVote = () => {
                                 onChange={setTitle}
                                 value={title}
                                 placeHolder="Contoh : Voting Presiden"
-                                className="mt-1 w-full sm:w-1/2"
+                                className="w-full mt-1 sm:w-1/2"
                             />
                         </div>
                         <div className="flex flex-col w-full sm:w-2/3">
@@ -150,7 +150,7 @@ const CreateVote = () => {
                                     minDate={new Date()}
                                     className={`w-full bg-zinc-100 py-2  px-4`}
                                 />
-                                <span className="text-center p-3">Sampai</span>
+                                <span className="p-3 text-center">Sampai</span>
                                 <ReactDatePicker
                                     onChange={(date) => date && setEndDateTime(date)}
                                     locale={"id"}
@@ -166,8 +166,8 @@ const CreateVote = () => {
                     {/* Detail Vote End */}
 
                     {/* Detail Kandidat Start */}
-                    <h3 className="font-semibold text-xl mt-10">Kandidat</h3>
-                    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-5">
+                    <h3 className="mt-10 text-xl font-semibold">Kandidat</h3>
+                    <div className="grid grid-cols-1 gap-4 mt-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                         {kandidatas.map((kandidat: Kandidat, index) => (
                             <KandidatForm
                                 key={index}
@@ -178,14 +178,14 @@ const CreateVote = () => {
                         ))}
                         <div
                             onClick={() => addKandidat()}
-                            className="w-1/4 flex flex-col items-center justify-center cursor-pointer bg-zinc-300 text-zinc-500 hover:bg-black aspect-square"
+                            className="flex flex-col items-center justify-center w-1/4 cursor-pointer bg-zinc-300 text-zinc-500 hover:bg-black aspect-square"
                         >
                             <PlusIcon className="w-1/2 sm:w-1/3" />
                         </div>
                     </div>
                     {/* Detail Kandidat End */}
                     <div className="text-right">
-                        <button className="py-2 px-5 bg-black text-white font-semibold rounded-md hover:bg-zinc-900" onClick={createVotes}>Buat Voting</button>
+                        <button className="px-5 py-2 font-semibold text-white bg-black rounded-md hover:bg-zinc-900" onClick={createVotes}>Buat Voting</button>
                     </div>
                 </form>
             </div>
